@@ -1,0 +1,101 @@
+    Veis Onur Sener 
+        CD 321
+
+        generator.cpp 
+            - acesta lucreaza cu 3 tipuri de vectori: unul cu numere prime, unul
+            cu numere compuse si unul cu numere pseudoprime
+            
+            - se fac 25 seturi de date de intrare, cu lungime variata (este 
+            calculata lungimea aleatoriu)
+            
+            - primele 15 teste contin numere prime si compuse (este posibil ca
+            uneori sa existe si cateva pseudoprime)
+            
+            - urmatoarele 10 contin si numere pseudoprime
+            
+            - se apeleaza "make generator", urmat de "./generator" si un nou
+            set de date de intrare va fi generat in directorul "in", iar in 
+            directorul "out" se vor gasi fisierele de verificare 
+
+            - dureaza in medie 5 secunde pentru a se crea testele
+
+        tester.cpp 
+            - se dau 2 argumente: numarul de iteratii si fisierul de intrare
+            (de exemplu "./test in/test0.in 10")
+            
+            - se memoreaza datele de intrare intr-un vector            
+            
+            - se apeleaza functia fermat pentru fiecare element din vectorul de 
+            intrare si numerele prime sunt salvate in "f"
+
+            - se afiseaza vectorul "f" in fisierul "outF"
+
+            - se apeleaza functia millerRabin pentru fiecare element din 
+            vectorul de intrare si numerele prime sunt salvate in "m"
+
+            - se afiseaza vectorul "m" in fisierul "outM"
+
+        algo.cpp
+            - initial sunt tratate cazurile speciale
+
+            - se alege un numar "a" la intamplare intre [2,n-2]
+ 
+            - se calculeaza cel mai mare divizor comun dintre "a" si "n"
+
+            - daca rezultatul este diferit de 1, inseamna ca "n" nu este prim
+
+            - daca a^(n-1) % n este diferit de 1, inseamna ca "n" nu este prim
+
+            - algoritmul se repeta pana la un anumit numar de iteratii, pentru
+            a avea o singuranta mai mare ca numarul este prim
+
+            - daca se ajunge pana la finalul functie, inseamna ca "n" este prim
+
+            * functia modEficient calculeaza (a^n)%p fara a ridica a la putearea n
+            https://www.geeksforgeeks.org/modular-exponentiation-power-in-modular-arithmetic/ 
+
+        algo2.cpp 
+            - initial sunt tratate cazurile speciale
+
+            - in cazul in care "n" este impar, scriem n - 1 = d * 2^r, unde "d"
+            este numar impar
+
+            - daca "n" este par, inseamna ca nu e prim
+
+            - se alege un numar "a" la intamplare intre [2,n-2]
+
+            - se calculeaza b = a^d % n
+
+            - daca "b" este 1 sau n - 1, atunci numarul "n" se considera prim
+
+            - urmatoareale secvente de cod se repeta de maxim "r" ori, pana
+            cand se ajunge pe unul dintre cazurile de oprire
+
+            - daca b nu are valoarea 1 sau n-1, atunci se calculeaza un nou b,
+            care este egal cu b^2 % n
+
+            - daca noul "b" este 1, "n" nu este prim
+
+            - daca noul "b" este n-1, "n" se considera prim
+
+            - algoritmul se repeta pana la un anumit numar de iteratii, pentru
+            a avea o singuranta mai mare ca numarul este prim
+
+            - daca se ajunge pana la finalul functie, inseamna ca "n" este prim
+
+        checker.sh
+            - dupa rularea comenzii "./checker.sh", trebuie introdus numarul
+            de iteratii pentru algortimii Fermat si Miller-Rabin
+
+            - de preferat, sa se introduca treptat valori crescatoare, pentru
+            a putea vizualiza dependenta algoritmilor de numarul de iteratii 
+            (de exemplu 1,2,3,5,10,20)
+
+            - checker-ul compara fisierele de la iesire cu cele din directorul
+            "out" 
+
+            - in urma mai multor teste, se poate observa ca algoritmul
+            Miller-Rabin este mult mai eficient, reusind sa descopere numerele
+            prime din 2-3 iteratii, pe cand algoritmul Fermat are nevoie de 10-20
+            de iteratii in cazul testelor cu pseudoprime
+
